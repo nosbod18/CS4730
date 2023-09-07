@@ -1,0 +1,10 @@
+function M = findXYZ(uv_left, uv_right, P_left, P_right)
+    
+    
+    b = [uv_right(1) * P_right(3,4) - P_right(1,4);
+         uv_right(2) * P_right(3,4) - P_right(2,4);
+         uv_left(1) * P_left(3,4) - P_left(1,4);
+         uv_left(2) * P_left(3,4) - P_right(2,4)]
+    A = [P_
+    M = pinv(A)*b;
+end
