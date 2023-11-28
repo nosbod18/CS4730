@@ -1,0 +1,8 @@
+prefix=/nfshome/gat7hb/catkin_ws/devel
+
+Name: artoolkit
+Description: Description of artoolkit
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib -lARgsub -lAR -lARMulti -lARvideo -lGL -lglut
+Requires: 

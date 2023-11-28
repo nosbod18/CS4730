@@ -1,0 +1,8 @@
+prefix=/nfshome/gat7hb/catkin_ws/devel
+
+Name: ar_pose
+Description: Description of ar_pose
+Version: 0.0.0
+Cflags: -I/nfshome/gat7hb/catkin_ws/devel/include -I/nfshome/gat7hb/catkin_ws/src/ar_tools/ar_pose/include
+Libs: -L${prefix}/lib 
+Requires: roscpp geometry_msgs visualization_msgs artoolkit message_runtime
