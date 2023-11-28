@@ -1,0 +1,4 @@
+<launch>
+    <node name="obstacle_avoidance" pkg="lab4" type="obstacle_avoidance">
+    </node>
+</launch>
