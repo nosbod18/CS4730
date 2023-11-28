@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/CMakeFiles/ARToolkit"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/CMakeFiles/ARToolkit.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/CMakeFiles/ARToolkit-complete.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/ARToolkit-prefix/src/ARToolkit-stamp/ARToolkit-install.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/ARToolkit-prefix/src/ARToolkit-stamp/ARToolkit-mkdir.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/ARToolkit-prefix/src/ARToolkit-stamp/ARToolkit-download.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/ARToolkit-prefix/src/ARToolkit-stamp/ARToolkit-update.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/ARToolkit-prefix/src/ARToolkit-stamp/ARToolkit-patch.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/ARToolkit-prefix/src/ARToolkit-stamp/ARToolkit-configure.rule"
+		},
+		{
+			"file" : "/nfshome/gat7hb/catkin_ws/build/ar_tools/artoolkit/ARToolkit-prefix/src/ARToolkit-stamp/ARToolkit-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"ARToolkit"
+		],
+		"name" : "ARToolkit"
+	}
+}

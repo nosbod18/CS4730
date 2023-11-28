@@ -1,0 +1,8 @@
+prefix=/nfshome/gat7hb/catkin_ws/devel
+
+Name: lab2
+Description: Description of lab2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

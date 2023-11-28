@@ -1,0 +1,8 @@
+prefix=/nfshome/gat7hb/catkin_ws/install
+
+Name: lab6
+Description: Description of lab6
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -llab6
+Requires: geometry_msgs nav_msgs roscpp rospy sensor_msgs std_msgs artoolkit visualization_msgs message_runtime
