@@ -1,2 +1,2 @@
-ar_tools/ar_pose:ar_tools/ar_tools:ar_tools/artoolkit:camera_umd/camera_umd:camera_umd/jpeg_streamer:camera_umd/uvc_camera:lab2:lab3:lab4:lab5:lab6
+ar_tools/ar_pose:ar_tools/ar_tools:ar_tools/artoolkit:camera_umd/camera_umd:camera_umd/jpeg_streamer:camera_umd/uvc_camera:lab2:lab3:lab4:lab5:lab6:lab7
 -DCATKIN_DEVEL_PREFIX=/nfshome/gat7hb/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/nfshome/gat7hb/catkin_ws/install -G Unix Makefiles

@@ -19,7 +19,7 @@ class Transforms():
         self.H_current_to_initial = np.identity(4)
         self.H_current_to_goal = np.identity(4)
         self.H_initial_to_goal = np.identity(4)
-        
+
         # The difference between alpha and beta affects the movement speed of the robot (big difference == faster)
         # Beta affects how far the robot deviates from the path to make it to the final location
         # i.e. the closer beta is to 0, the straighter the path will be

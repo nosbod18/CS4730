@@ -473,6 +473,12 @@ lab6_LIB_DEPENDS:STATIC=
 //Value Computed by CMake
 lab6_SOURCE_DIR:STATIC=/nfshome/gat7hb/catkin_ws/src/lab6
 
+//Value Computed by CMake
+lab7_BINARY_DIR:STATIC=/nfshome/gat7hb/catkin_ws/build/lab7
+
+//Value Computed by CMake
+lab7_SOURCE_DIR:STATIC=/nfshome/gat7hb/catkin_ws/src/lab7
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/libbondcpp.so
 
@@ -696,7 +702,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=14
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=15
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

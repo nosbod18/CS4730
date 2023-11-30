@@ -136,6 +136,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/nfshome/gat7hb/catkin_ws/build/ar_tools/ar_pose/cmake_install.cmake")
   include("/nfshome/gat7hb/catkin_ws/build/lab3/cmake_install.cmake")
   include("/nfshome/gat7hb/catkin_ws/build/lab6/cmake_install.cmake")
+  include("/nfshome/gat7hb/catkin_ws/build/lab7/cmake_install.cmake")
   include("/nfshome/gat7hb/catkin_ws/build/camera_umd/uvc_camera/cmake_install.cmake")
 
 endif()

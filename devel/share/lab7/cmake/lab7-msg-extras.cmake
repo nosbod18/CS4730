@@ -1,0 +1,2 @@
+set(lab7_MESSAGE_FILES "/nfshome/gat7hb/catkin_ws/devel/share/lab7/msg/PumaAction.msg;/nfshome/gat7hb/catkin_ws/devel/share/lab7/msg/PumaActionGoal.msg;/nfshome/gat7hb/catkin_ws/devel/share/lab7/msg/PumaActionResult.msg;/nfshome/gat7hb/catkin_ws/devel/share/lab7/msg/PumaActionFeedback.msg;/nfshome/gat7hb/catkin_ws/devel/share/lab7/msg/PumaGoal.msg;/nfshome/gat7hb/catkin_ws/devel/share/lab7/msg/PumaResult.msg;/nfshome/gat7hb/catkin_ws/devel/share/lab7/msg/PumaFeedback.msg")
+set(lab7_SERVICE_FILES "")
