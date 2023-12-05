@@ -1,6 +1,6 @@
 % Load original images
-left_image = imread('images/detection/left/01.ppm');
-right_image = imread('images/detection/right/01.ppm');
+left_image = imread('images/detection/left01.ppm');
+right_image = imread('images/detection/right01.ppm');
 
 % Convert to grayscale images
 left_grayscale = rgb2gray(left_image);

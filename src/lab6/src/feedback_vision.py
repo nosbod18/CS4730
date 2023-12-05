@@ -8,6 +8,7 @@ import tf
 import numpy as np
 import sys
 import math
+from average import Avg_xyz, Avg_rpy # calibration data
 
 ###############################################################################
 
@@ -39,7 +40,7 @@ w = 0
 ar_received = False
 first_ar = True
 ar_bias = 0
-odom_received = False
+odom_received = Falseavg_z
 imu_received = False
 first_imu = True
 imu_bias = 0
@@ -47,7 +48,7 @@ imu_bias = 0
 marker_in_view = False
 
 threshold_linear = 0.05
-threshold_angular = 0.1 # 0.2
+threshold_angular = 0.1 
 
 xyz = [0, 0, 0]
 rpy = [0, 0, 0]
@@ -190,6 +191,8 @@ def move(x_G, y_G, theta_G):
 
     theta_G = math.radians(theta_G)
     set_iHg(x_G, y_G, theta_G)
+    set_cHr(Avg_xyz[0], Avg_xyz[1], Avg_xyz[2], Avg_rpy[0], Avg_rpy[1], Avg_rpy[2]) # set cHr
+
 
     move = Twist()
 

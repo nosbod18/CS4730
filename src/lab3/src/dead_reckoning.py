@@ -41,25 +41,12 @@ orient_thresh = 0.10
 """
 Utility functions
 """
-def odom_callback(odom_msg):
+def odom_callback(msg):
     global odom_pose, odom_not_received, robot_to_world
-    pose = Pose()
-    pose.position.x = odom_msg.pose.pose.position.x
-    pose.position.y = odom_msg.pose.pose.position.y
-    pose.position.z = 0.0
 
-    quat = (
-        odom_msg.pose.pose.orientation.x,
-        odom_msg.pose.pose.orientation.y,
-        odom_msg.pose.pose.orientation.z,
-        odom_msg.pose.pose.orientation.w
-    )
-    euler = tf.transformations.euler_from_quaternion(quat)
-
-    pose.orientation.x = odom_msg.pose.pose.orientation.x
-    pose.orientation.y = odom_msg.pose.pose.orientation.y
-    pose.orientation.z = odom_msg.pose.pose.orientation.z
-    pose.orientation.w = odom_msg.pose.pose.orientation.w
+    position = msg.pose.pose.position
+    orientation = msg.pose.pose.orientation
+    euler = tf.transformations.euler_from_quaternion((orientation.x, orientation.y, orientation.z, orientation.w))
 
     rotation_matrix = np.array([[math.cos(euler[2]), -math.sin(euler[2]), 0],
                                 [math.sin(euler[2]), math.cos(euler[2]), 0],
