@@ -10,11 +10,8 @@ import sys
 import math
 from average import Avg_xyz, Avg_rpy # calibration data
 
-###############################################################################
 
-# Some ideas:
-# - Clamp the velocities to avoid large jumps between positive and negative near the target position
-# - Fusing the ar data with the odometry data (maybe an existing ros package)
+###############################################################################
 
 rHg = np.identity(4) # error
 iHr = np.identity(4)
@@ -23,12 +20,9 @@ cHr = np.identity(4)
 cHm = np.identity(4)
 mHg = np.identity(4)
 
-# The difference between alpha and beta affects the movement speed of the robot (big difference == faster)
-# Beta affects how far the robot deviates from the path to make it to the final location, i.e. the closer
-# beta is to 0, the straighter the path will be
-K_rho = 1       # 1
-K_alpha = 4     # 2
-K_beta = -0.5   # -.3
+K_rho = 3
+K_alpha = 0.2
+K_beta = -0.2
 gain = [K_rho, K_alpha, K_beta]
 
 rho = 0
@@ -55,6 +49,7 @@ rpy = [0, 0, 0]
 error = [0, 0, 0]
 
 pub = None
+
 
 ###############################################################################
 
@@ -92,20 +87,21 @@ def set_cHr(x, y, z, roll, pitch, yaw):
     cHr[:3,:3] = np.matmul(np.matmul(Rz, Ry), Rx)
     cHr[:3, 3] = [x, y, z]
 
+
 ###############################################################################
 
 def ar_callback(data):
     global xyz, rpy, first_ar, ar_bias, ar_received, marker_in_view
 
     if len(data.markers) > 0:
-        position = data.markers[0].pose.pose.position
-        xyz = [position.z, position.y, -position.x]
-
-        orientation = data.markers[0].pose.pose.orientation
-        orientation = [orientation.z, orientation.y, -orientation.x, orientation.w]
-        rpy = list(tf.transformations.euler_from_quaternion(orientation))
-
         marker_in_view = True
+        for marker in data.markers:
+            orientation = marker.pose.pose.orientation
+            orientation = [orientation.x, orientation.y, orientation.z, orientation.w]
+            maybe_rpy = list(tf.transformations.euler_from_quaternion(orientation))
+
+            position = marker.pose.pose.position
+            xyz = [position.x, position.y, position.z]
     else:
         marker_in_view = False
         return
@@ -121,6 +117,9 @@ def ar_callback(data):
 def odom_callback(data):
     global xyz, odom_received
 
+    if marker_in_view:
+        return
+
     position = data.pose.pose.position
     xyz = [position.x, position.y, position.z]
     odom_received = True
@@ -128,6 +127,9 @@ def odom_callback(data):
 
 def imu_callback(data):
     global rpy, imu_received, first_imu, imu_bias
+
+    if marker_in_view:
+        return
 
     rpy = list(tf.transformations.euler_from_quaternion([data.x, data.y, data.z, data.w]))
 
@@ -137,6 +139,7 @@ def imu_callback(data):
 
     rpy[2] -= imu_bias
     imu_received = True
+
 
 ###############################################################################
 
@@ -177,10 +180,11 @@ def update_rHg():
         rHg = np.matmul(np.matmul(np.linalg.inv(cHr), cHm), mHg)
     else:
         rHg = np.matmul(np.linalg.inv(iHr), iHg)
-    
+
     ar_received = False
     odom_received = False
     imu_received = False
+
 
 ###############################################################################
 
@@ -192,7 +196,6 @@ def move(x_G, y_G, theta_G):
     theta_G = math.radians(theta_G)
     set_iHg(x_G, y_G, theta_G)
     set_cHr(Avg_xyz[0], Avg_xyz[1], Avg_xyz[2], Avg_rpy[0], Avg_rpy[1], Avg_rpy[2]) # set cHr
-
 
     move = Twist()
 
@@ -221,6 +224,7 @@ def move(x_G, y_G, theta_G):
 
                 pub.publish(stop)
                 break
+
 
 ###############################################################################
 
