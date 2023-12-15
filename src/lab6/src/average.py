@@ -124,4 +124,5 @@ Avg_xyz = [avg_x, avg_y, avg_z]
 Avg_rpy = [avg_roll, avg_pitch, avg_yaw]
 
 
-print(avg_x, avg_z)
+print('xyz: [{:,.4f}, {:,.4f}, {:,.4f}]'.format(avg_x, avg_y, avg_z))
+print('rpy: [{:,.4f}, {:,.4f}, {:,.4f}]'.format(avg_roll, avg_pitch, avg_yaw))
