@@ -1,5 +1,5 @@
 function nobj = move_object()
-    system('save_single_image puma1 0 > /dev/null')
+    system('save_single_image puma1 0 > /dev/null');
 
     % Load original images
     left_image = imread('left0.ppm');
@@ -31,6 +31,8 @@ function nobj = move_object()
 
     left_stat = regionprops(left_label, 'centroid', 'Orientation', 'Area');
     right_stat = regionprops(right_label, 'centroid', 'Orientation', 'Area');
+
+    nobj = numel(left_stat);
 
     left_calib = load('Calib_Results_left.mat');
     right_calib = load('Calib_Results_right.mat');
@@ -64,34 +66,35 @@ function nobj = move_object()
     M = rHw * M;
     x = M(1);
     y = M(2);
-    t = O;
+    t = 90 - O;
+    o = 0;
+    a = 90;
+
+    %x = x + 130 * cos(90)
+    %y = y - 130 * sin(90)
 
     % Move to object and grab it
-    system(sprintf('PumaMoveXYZOAT %d %d -66 0 90 %d > /dev/null', x, y, t));
-    pause(1);
+    system(sprintf('PumaMoveXYZOAT %d %d -66 %d %d %d', x, y, o, a, t));
+    %pause(1);
     system('openGripper');
-    pause(1);
-    system(sprintf('PumaMoveXYZOAT %d %d -184 0 90 %d > /dev/null', x, y, t));
-    pause(1);
-    system('closeGripper')
-    pause(1);
+    %pause(1);
+    system(sprintf('PumaMoveXYZOAT %d %d -184 %d %d %d', x, y, o, a, t));
+    %pause(1);
+    system('closeGripper');
+    %pause(1);
 
     % Move up and over to be clear of the camera stand
-    system(sprintf('PumaMoveXYZOAT %d %d -66 0 90 %d > /dev/null', x, y, t));
-    pause(1);
-    system('PumaMoveXYZOAT 126 282 -66 0 90 0 > /dev/null');
-    pause(1);
+    system(sprintf('PumaMoveXYZOAT %d %d -66 0 90 %ds', x, y, t));
+    %pause(1);
+    system('PumaMoveXYZOAT 126 282 -66 0 90 0');
+    %pause(1);
 
     % Flip over and drop object
-    system('PumaMoveJoints -90 -90 90 0 0 0 > /dev/null');
-    pause(1);
-    system('Puma_SPEED 20');
-    pause(1);
-    system('PumaMoveJoints 90 -90 90 0 0 0 > /dev/null');
-    pause(1);
-    system('Puma_SPEED 10');
-    pause(1);
-    system('PumaMoveXYZOAT -115 -400 -135 0 0 180 > /dev/null');
+    system('PumaMoveJoints -90 -90 90 0 0 0');
+    pause(9);
+    system('PumaMoveJoints 90 -90 90 0 0 0');
+    pause(17);
+    system('PumaMoveXYZOAT -115 -400 -135 0 0 180');
     pause(1);
     system('openGripper');
     pause(1);
@@ -99,12 +102,10 @@ function nobj = move_object()
     pause(1);
 
     % Flip back over
-    system('PumaMoveJoints 90 -90 90 0 0 0 > /dev/null');
+    system('PumaMoveJoints 90 -90 90 0 0 0');
+    pause(9);
+    system('PumaMoveJoints -90 -90 90 0 0 0');
+    pause(18);
+    system('PumaMoveXYZOAT 126 282 -66 0 90 0');
     pause(1);
-    system('PumaMoveJoints -90 -90 90 0 0 0 > /dev/null');
-    pause(1);
-    system('PumaMoveXYZOAT 126 282 -66 0 90 0 > /dev/null');
-    pause(1);
-
-    nobj = numel(left_stat);
 end
